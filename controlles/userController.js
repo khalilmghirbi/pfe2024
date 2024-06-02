@@ -79,6 +79,11 @@ exports.login= (email,user_pass)=>{
             }
         })
     })
+};
+
+
+exports.UpdateUser= (userId,updatedUser)=>{
+    return db.User.update(updatedUser,{where:{id_user:userId}})
 }
 
 

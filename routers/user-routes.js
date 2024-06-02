@@ -93,12 +93,13 @@ route.get('/users',verifyToken, (req,res,next)=>{
 
 /// valider
 route.put('/user/:id_user',verifyToken, (req,res,next)=>{
-    db.User.update({
-        username:req.body.username,
-        email:req.body.email,
-    },{where:{id_user:req.params.id_user}})
-    .then((response)=>res.status(200).send(response))
-    .catch((err)=>res.status(400).send(err))
+    userController.createUser(req.params.id_user, 
+        {
+            username:req.body.username,
+            email:req.body.email,
+        }
+    ).then((response)=>res.status(200).send(response))
+    .catch((err)=>res.status(400).send(err));
 })
 ///valider 
 route.delete('/user/:id_user',verifyToken, (req,res,next)=>{
